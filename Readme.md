@@ -25,16 +25,19 @@ Easy, right?
 
 Now create the script into the OpenMediaVault server.
 1. Login via SSH, and go to the folder `/home/root`.
-2. Download from this repository the file `automount_cryptodisk`
-3. Make it executable:
+2. Download from this repository the file `automount_cryptodisk`   
+```
+wget http://raw.githubusercontent.com/TheFax/Automount_LUKS_openmediavault/master/automount_cryptodisk
+```
+3. Make it executable:  
 ```
 root@openmediavault:/# chmod 755 automount_cryptodisk
 ```
-4. Edit the script, and set the location of your remote key changing the line `REMOTEKEY=“192.168.0.1/key.txt”`:
+4. Edit the script, and set the location of your remote key changing the line `REMOTEKEY=“192.168.0.1/key.txt”`:  
 ```
 root@openmediavault:/# nano automount_cryptodisk
 ```
-5. Now go to the administration page of your NAS and create a new job: at every reboot, exeute the script we have created some minutes ago.
+5. Now go to the administration page of your NAS and create a new job: at every reboot, exeute the script we have created some minutes ago.  
 ![OMV job](OMV_job.jpg)
 
 Reboot your server and enjoy your auto-unlock :-)
