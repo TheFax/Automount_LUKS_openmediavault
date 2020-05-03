@@ -1,0 +1,40 @@
+#! /bin/bash
+
+#PLEASE, customize this variable with the correct url of your remote key:
+REMOTEKEY="192.168.0.1/key.txt"
+
+SCRIPTNAME="automount_cryptodisk_v2"
+LOGFILE="/tmp/automount_crypto"
+KEYTEMPFILE="/tmp/amcdkey.txt"
+
+    echo "BEGIN Script $SCRIPTNAME " > $LOGFILE
+
+    echo "Download key into a temp file..." >> $LOGFILE
+    wget -O $KEYTEMPFILE $REMOTEKEY >> $LOGFILE 2>&1
+
+    echo "Loading key from the temp file..." >> $LOGFILE
+    KEYSTRING="$(cat $KEYTEMPFILE)"
+
+    echo "Removing key temp file.." >> $LOGFILE
+    rm -rf $KEYTEMPFILE >> $LOGFILE 2>&1
+
+    echo "Retrieving LUCKS device names..." >> $LOGFILE
+    DISKTOMOUNT=( $( blkid | grep LUKS | cut --fields=1 --delimiter=: ) )
+
+    #at this point. DISKTOMOUNT is an array containing all the LUCKS devices detected into the system
+
+    #for each device...
+    for ITEM in ${DISKTOMOUNT[*]}
+    do
+      echo "Detected LUKS device: $ITEM" >> $LOGFILE
+
+      DEVICENAME="${ITEM#/dev/}"
+      echo "Calculated device name: $DEVICENAME" >> $LOGFILE
+
+      echo "Try to unlock disk..." >> $LOGFILE
+      echo $KEYSTRING | cryptsetup luksOpen /dev/$DEVICENAME $DEVICENAME-crypt >> $LOGFILE 2>&1
+    done
+
+    echo "END of log." >> $LOGFILE
+
+exit 0
