@@ -34,7 +34,8 @@ root@openmediavault:/# chmod 755 automount_cryptodisk
 ```
 root@openmediavault:/# nano automount_cryptodisk
 ```
-5. Now go to the administration page of your NAS and create a new job:
+5. Now go to the administration page of your NAS and create a new job: at every reboot, exeute the script we have created some minutes ago.
+![OMV job](OMV_job.jpg)
 
 Reboot your server and enjoy your auto-unlock :-)
 
