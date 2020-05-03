@@ -74,5 +74,5 @@ Tested on OMV4 / Openmediavault 4
 Tested on OMV5 / Openmediavault 5  
 
 ## External links ##
-
-http://forum.openmediavault.org/index.php/Thread/15532-LUKS-auto-unlock-via-keyfile-from-a-network-device/#post140091
+[My original project](https://goodstone.altervista.org/wiki/doku.php?id=linux:openmediavault:automount_luks_with_remote_key)  
+[Openmediavault Forum about this functionality](http://forum.openmediavault.org/index.php/Thread/15532-LUKS-auto-unlock-via-keyfile-from-a-network-device/#post140091)
