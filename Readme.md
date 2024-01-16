@@ -72,6 +72,7 @@ Please analize the content of the file in event of trouble.
 Tested on OMV3 / Openmediavault 3  
 Tested on OMV4 / Openmediavault 4  
 Tested on OMV5 / Openmediavault 5  
+Tested on OMV6 / Openmediavault 6  
 
 ## External links ##
 [My original project](https://goodstone.altervista.org/wiki/doku.php?id=linux:openmediavault:automount_luks_with_remote_key)  
