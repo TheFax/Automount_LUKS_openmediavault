@@ -1,4 +1,4 @@
-# Automount LUKS encripted disk using remote key #
+# Automount LUKS encrypted disk using remote key #
 
 ## Goals ##
 
