@@ -10,7 +10,11 @@ KEYTEMPFILE="/tmp/amcdkey.txt"
     echo "BEGIN Script $SCRIPTNAME " > $LOGFILE
 
     echo "Download key into a temp file..." >> $LOGFILE
-    wget -O $KEYTEMPFILE $REMOTEKEY >> $LOGFILE 2>&1
+    until wget -O "$KEYTEMPFILE" "$REMOTEKEY" >> "$LOGFILE" 2>&1
+    do
+        echo "wget failed, retrying in 60 seconds..." >> "$LOGFILE"
+        sleep 60
+    done
 
     echo "Loading key from the temp file..." >> $LOGFILE
     KEYSTRING="$(cat $KEYTEMPFILE)"
